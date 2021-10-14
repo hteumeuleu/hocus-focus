@@ -3,6 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
 	justify-content: center;
 	min-height: 100vh;
 	color: #fff;
-	font: 1em/1.5 'Montserrat', sans-serif;
+	font: 1em/1.5 'Montserrat', 'Futura', sans-serif;
 	background-color: #282220;
 }
 
@@ -51,11 +52,12 @@ kbd {
 	display: flex;
 	flex-wrap: wrap;
 	gap: rem(16px);
-	max-width: rem(432px);
+	max-width: rem(544px);
 	margin: auto;
 }
 
-.game-icon {
+.icon {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -66,6 +68,7 @@ kbd {
 	background-color: #2f2927;
 	border-radius: rem(8px);
 	outline: none;
+	color: #fff;
 
 	&:hover {
 		pointer-events: none;
@@ -79,6 +82,41 @@ kbd {
 
 	&:last-child:focus {
 		border-color: #ff7575;
-		background-color: #f8d7da;
 	}
+
+	&[formaction]:focus {
+		border-color: #71d981;
+	}
+
+	&:not(button) {
+		background-color: transparent;
+		border-color: transparent;
+	}
+}
+
+.badge {
+	position: absolute;
+	bottom: rem(-8px);
+	padding: 0 rem(8px);
+	font-size: rem(12px);
+	font-weight: bold;
+	line-height: rem(16px);
+	text-transform: uppercase;
+	border-radius: rem(10px);
+	color: #fff;
+	background-color: #3d3836;
+
+	:focus & {
+		color: #282220;
+		background-color: #75bfff;
+	}
+
+	[formaction] & {
+		color: #282220;
+		background-color: #71d981;
+	}
+}
+
+.scoreboard {
+	font-size: rem(16px);
 }
