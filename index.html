@@ -16,24 +16,29 @@
 			</p>
 		</header>
 		<main role="main">
-			<div class="game">
-				<button type="button" class="game-icon" autofocus="autofocus">🧙‍♀️</button>
-				<button type="button" class="game-icon">🪄</button>
-				<button type="button" class="game-icon">🧪</button>
-				<button type="button" class="game-icon">🐈‍⬛</button>
-				<button type="button" class="game-icon">⚰️</button>
-				<button type="button" class="game-icon">🪦</button>
-				<button type="button" class="game-icon">🍂</button>
-				<button type="button" class="game-icon">👻</button>
-				<button type="button" class="game-icon">🐍</button>
-				<button type="button" class="game-icon">🦉</button>
-				<button type="button" class="game-icon">🕷️</button>
-				<button type="button" class="game-icon">🎃</button>
-				<button type="button" class="game-icon">🪱</button>
-				<button type="button" class="game-icon">🔮</button>
-				<button type="button" class="game-icon">🕯️</button>
-				<button type="button" class="game-icon">💀</button>
-			</div>
+			<form method="get">
+				<div class="game">
+					<button type="button" class="icon" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
+					<button type="button" class="icon">🪄</button>
+					<button type="button" class="icon">🐈‍⬛</button>
+					<button type="button" class="icon">🕷️</button>
+					<button type="button" class="icon">⚰️</button>
+					<button type="button" class="icon">🪦</button>
+					<button type="button" class="icon">🍂</button>
+					<div class="icon">
+						<div class="scoreboard">
+							Level 1
+						</div>
+					</div>
+					<button formaction="/2/" type="submit" class="icon">🎃 <span class="badge">Finish</span></button>
+					<button type="button" class="icon">🐍</button>
+					<button type="button" class="icon">🦉</button>
+					<button type="button" class="icon">🪱</button>
+					<button type="button" class="icon">🔮</button>
+					<button type="button" class="icon">🕯️</button>
+					<button type="reset" class="icon">💀</button>
+				</div>
+			</form>
 		</main>
 		<footer class="footer" role="contentinfo">
 			<p>Atrociously made by <a href="https://twitter.com/HTeuMeuLeu">@HTeuMeuLeu</a>.</p>
