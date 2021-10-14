@@ -1,0 +1,84 @@
+@import "_mixins.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	color: #fff;
+	font: 1em/1.5 'Montserrat', sans-serif;
+	background-color: #282220;
+}
+
+a {
+	color: inherit;
+	text-underline-offset: rem(2px);
+}
+
+kbd {
+	font-family: monospace;
+	border: rem(1px) solid;
+	border-radius: rem(4px);
+	padding: rem(2px) rem(4px);
+}
+
+.page {
+	max-width: rem(600px);
+	margin: auto;
+}
+
+.header,
+.footer {
+	padding: rem(32px);
+	text-align: center;
+}
+
+.header-title {
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: rem(32px);
+}
+
+.header-subtitle {
+	text-transform: uppercase;
+}
+
+.game {
+	display: flex;
+	flex-wrap: wrap;
+	gap: rem(16px);
+	max-width: rem(432px);
+	margin: auto;
+}
+
+.game-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(96px);
+	height: rem(96px);
+	font-size: rem(64px);
+	border: rem(2px) solid #3d3836;
+	background-color: #2f2927;
+	border-radius: rem(8px);
+	outline: none;
+
+	&:hover {
+		pointer-events: none;
+	}
+
+	&:focus,
+	&:first-child:focus {
+		border-color: #75bfff;
+		background-color: #666;
+	}
+
+	&:last-child:focus {
+		border-color: #ff7575;
+		background-color: #f8d7da;
+	}
+}
