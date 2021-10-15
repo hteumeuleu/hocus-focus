@@ -44,14 +44,20 @@ kbd {
 	text-align: center;
 }
 
-.header-title {
+.title {
 	text-transform: uppercase;
 	font-weight: 900;
 	font-size: rem(32px);
 }
 
-.header-subtitle {
+.subtitle {
 	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.rules {
+	margin-top: rem(32px);
+	color: rgba(255,255,255,0.6);
 }
 
 .game {
@@ -81,10 +87,7 @@ kbd {
 	outline: none;
 	color: #fff;
 	text-decoration: none;
-
-	&:hover {
-		pointer-events: none;
-	}
+	pointer-events: none;
 
 	&:focus,
 	&:first-child:focus {
@@ -131,4 +134,24 @@ kbd {
 
 .scoreboard {
 	font-size: rem(16px);
+	text-align: center;
+}
+
+.level {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.timer {
+	font-variant-numeric: tabular-nums;
+}
+
+.instructions {
+	width: fit-content;
+	margin: rem(32px) auto 0;
+	color: rgba(255,255,255,0.6);
+
+	p:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
 }
