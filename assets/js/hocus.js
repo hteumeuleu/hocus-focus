@@ -24,3 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 	// history.pushState(null, '', '/');
 });
+
+document.addEventListener('click', function() {
+	document.querySelector('button.icon').focus();
+});
