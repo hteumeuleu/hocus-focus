@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				event.stopPropagation();
 			}
 		});
-		// gameIcon.addEventListener('click', function(event) {
-		// 	event.preventDefault();
-		// 	event.stopPropagation();
-		// });
+		gameIcon.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+		});
 		gameIcon.addEventListener('keypress', function(event) {
 			if(event.keyCode === 32 || event.keyCode === 13) {
 				console.log(this.innerHTML);
@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 	});
-	// history.pushState(null, '', '/');
 });
 
-document.addEventListener('click', function() {
-	document.querySelector('button.icon').focus();
+document.addEventListener('mousedown', function() {
+	event.preventDefault();
+	event.stopPropagation();
 });

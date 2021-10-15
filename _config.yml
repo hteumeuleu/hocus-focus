@@ -1,0 +1,11 @@
+collections:
+  posts:
+    output: false
+
+permalink: /:title/
+
+exclude: [vendor, "Gemfile", "Gemfile.lock", "README.md"]
+include: ["_js"]
+
+sass:
+  style: compressed

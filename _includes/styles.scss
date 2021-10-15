@@ -1,4 +1,10 @@
-@import "_mixins.scss";
+// rem($target)
+// Convertit une taille donnée en pixels en rem en se basant sur la valeur de `$default-font-size`.
+$default-font-size: 16px;
+@function rem($target) {
+	@if $target == 0 { @return 0 }
+	@return 1rem * $target / $default-font-size;
+}
 
 * {
 	margin: 0;
@@ -55,6 +61,10 @@ kbd {
 	max-width: rem(544px);
 	margin: auto;
 	justify-content: center;
+
+	@media (max-width: rem(600px)) {
+		max-width: rem(320px);
+	}
 }
 
 .icon {
@@ -70,6 +80,7 @@ kbd {
 	border-radius: rem(8px);
 	outline: none;
 	color: #fff;
+	text-decoration: none;
 
 	&:hover {
 		pointer-events: none;
@@ -89,7 +100,7 @@ kbd {
 		border-color: #71d981;
 	}
 
-	&:not(button) {
+	&:not(:is(button, a)) {
 		background-color: transparent;
 		border-color: transparent;
 	}
