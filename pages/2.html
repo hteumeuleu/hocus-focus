@@ -4,15 +4,15 @@ layout: default
 permalink: /2/
 ---
 <div class="rules">
-	<p>Oh no! A malicious <span class="char" style="color:#ecedf0;"><span aria-hidden="true">👻</span> ghost</span> removed all the <code>:focus</code> styles.</p>
+	<p><span class="oh-no">Oh no!</span> A malicious <span class="char" style="color:#ecedf0;"><span aria-hidden="true">👻</span> ghost</span> stole the <code>:focus</code> styles.</p>
 </div>
 <form action="/3/">
-	<div class="game">
+	<div class="game has-startup-styles">
 		<div class="scoreboard">
 			<span class="level">Level 2</span>
 			<span class="timer">00:00:00</span>
 		</div>
-		<button type="button" class="icon is-start" autofocus="autofocus"><span class="ghost">👻</span> <span class="badge">Start</span></button>
+		<button type="button" class="icon is-start" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
 		<button type="button" class="icon">🔮</button>
 		<button type="button" class="icon">🐍</button>
 		<button type="submit" class="icon is-finish">🎃 <span class="badge">Finish</span></button>
@@ -23,20 +23,28 @@ permalink: /2/
 		<button type="button" class="icon">🪦</button>
 		<button type="button" class="icon">🪄</button>
 		<button type="button" class="icon">🐈‍⬛</button>
-		<button type="reset" class="icon">💀</button>
 		<button type="button" class="icon">🍂</button>
 		<button type="button" class="icon">⚰️</button>
+		<button type="button" class="icon is-ghost"><span class="ghost">👻</span></button>
 	</div>
 </form>
 <style>
-	.icon:not(.is-start) { animation: ghost ease-in-out 1s; }
-	.icon:not(.is-start):nth-child(2n+1) { animation-delay: 0.1s; }
-	.ghost { animation:shakeY ease-in-out 1s 0.5s; }
+	.has-startup-styles .icon:not(.is-start) { animation: highlightBorder ease-in-out 1s 0.4s; }
+	.has-startup-styles .icon:not([class*="is-"]):nth-child(2n+1) { animation-delay: 0.3s; }
+	.has-startup-styles .icon:not([class*="is-"]):nth-child(3n+3) { animation-delay: 0.2s; }
+	.has-startup-styles .icon.is-ghost { animation-delay: 0.5s; }
+	.has-startup-styles .ghost { animation:shakeY ease-in-out 0.5s 1s; }
+	.oh-no { display:inline-block; font-weight:bold; animation:headShake ease-in-out 0.5s; }
 
-	@keyframes ghost {
+	@keyframes highlightBorder {
 		from { border-color:#3d3836; }
 		50% { border-color:#75bfff; }
 		to { border-color:#3d3836; }
 	}
 </style>
+<script>
+	document.querySelector('.ghost').addEventListener('animationend', function() {
+		document.querySelector('.has-startup-styles').classList.remove('has-startup-styles');
+	}, { once:true });
+</script>
 {% include instructions.html %}

@@ -35,8 +35,14 @@ kbd {
 	padding: rem(2px) rem(4px);
 }
 
+code {
+	padding: rem(4px) rem(8px);
+	border-radius: rem(16px);
+	background-color: #2f2927;
+}
+
 .page {
-	max-width: rem(632px);
+	// max-width: rem(632px);
 	margin: auto;
 	padding: 0 rem(16px);
 }
