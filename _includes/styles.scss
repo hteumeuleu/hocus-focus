@@ -15,6 +15,7 @@ $default-font-size: 16px;
 body {
 	display: flex;
 	justify-content: center;
+	min-width: rem(320px);
 	min-height: 100vh;
 	color: #fff;
 	font: 1em/1.5 'Montserrat', 'Futura', sans-serif;
@@ -24,6 +25,7 @@ body {
 a {
 	color: inherit;
 	text-underline-offset: rem(2px);
+	outline-offset: rem(4px);
 }
 
 kbd {
@@ -34,30 +36,49 @@ kbd {
 }
 
 .page {
-	max-width: rem(600px);
+	max-width: rem(632px);
 	margin: auto;
+	padding: 0 rem(16px);
 }
 
 .header,
 .footer {
-	padding: rem(32px);
+	padding: rem(16px) 0;
 	text-align: center;
+}
+
+.footer {
+	color: #9e9b9a;
+
+	a:hover, a:focus {
+		color: #fff;
+	}
 }
 
 .title {
 	text-transform: uppercase;
 	font-weight: 900;
-	font-size: rem(32px);
+	font-size: 2em;
+
+	a {
+		text-decoration: none;
+	}
 }
 
 .subtitle {
-	text-transform: uppercase;
 	font-weight: bold;
+	font-size: 1.25em;
 }
 
 .rules {
-	margin-top: rem(32px);
-	color: rgba(255,255,255,0.6);
+	margin-bottom: rem(16px);
+	color: #9e9b9a;
+	text-align: center;
+}
+
+.char {
+	font-weight: bold;
+	white-space: nowrap;
 }
 
 .game {
@@ -67,13 +88,10 @@ kbd {
 	max-width: rem(544px);
 	margin: auto;
 	justify-content: center;
-
-	@media (max-width: rem(600px)) {
-		max-width: rem(320px);
-	}
 }
 
-.icon {
+.icon,
+.scoreboard {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -81,32 +99,50 @@ kbd {
 	width: rem(96px);
 	height: rem(96px);
 	font-size: rem(64px);
-	border: rem(2px) solid #3d3836;
-	background-color: #2f2927;
+	border: rem(2px) solid transparent;
 	border-radius: rem(8px);
 	outline: none;
 	color: #fff;
 	text-decoration: none;
 	pointer-events: none;
+}
 
-	&:focus,
-	&:first-child:focus {
+.icon {
+	border-color: #3d3836;
+	background-color: #2f2927;
+
+	&.is-start:focus {
 		border-color: #75bfff;
 		background-color: #666;
 	}
 
-	&:last-child:focus {
-		border-color: #ff7575;
+	&.is-error {
+		// border-color: #ff7575;
+		animation-timing-function: ease-in-out;
+		animation-name: headShake;
+		animation-duration: 0.8s;
 	}
 
-	&[formaction]:focus {
-		border-color: #71d981;
-	}
+	.has-focus-styles & {
+		&:focus {
+			border-color: #75bfff;
+			background-color: #666;
+		}
 
-	&:not(:is(button, a)) {
-		background-color: transparent;
-		border-color: transparent;
+		&.is-over:focus {
+			border-color: #ff7575;
+		}
+
+		&.is-finish:focus {
+			border-color: #71d981;
+		}
 	}
+}
+
+.scoreboard {
+	font-size: rem(16px);
+	text-align: center;
+	flex-direction: column;
 }
 
 .badge {
@@ -121,20 +157,19 @@ kbd {
 	color: #fff;
 	background-color: #3d3836;
 
-	:focus & {
+	.is-start:focus & {
 		color: #282220;
 		background-color: #75bfff;
 	}
 
-	[formaction] & {
+	.has-focus-styles :focus & {
 		color: #282220;
+		background-color: #75bfff;
+	}
+
+	.has-focus-styles .is-finish:focus & {
 		background-color: #71d981;
 	}
-}
-
-.scoreboard {
-	font-size: rem(16px);
-	text-align: center;
 }
 
 .level {
@@ -143,15 +178,94 @@ kbd {
 }
 
 .timer {
+	display: block;
 	font-variant-numeric: tabular-nums;
 }
 
 .instructions {
 	width: fit-content;
 	margin: rem(32px) auto 0;
-	color: rgba(255,255,255,0.6);
+	color: #9e9b9a;
 
 	p:not(:last-child) {
 		margin-bottom: rem(4px);
+	}
+
+	@media (min-width: rem(601px)) {
+		display: flex;
+
+		p {
+			margin: 0 rem(16px);
+		}
+	}
+}
+
+@media only screen and (max-width: rem(600px)) {
+	.header {
+		font-size: rem(12px);
+	}
+
+	.game {
+		max-width: rem(320px);
+	}
+}
+
+@media only screen and (max-width: rem(375px)) {
+	.icon,
+	.scoreboard {
+		width: rem(80px);
+		height: rem(80px);
+	}
+
+	.icon {
+		font-size: rem(48px);
+	}
+}
+
+@keyframes shakeY {
+	from,
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		transform: translate3d(0, -5px, 0);
+	}
+
+	20%,
+	40%,
+	60%,
+	80% {
+		transform: translate3d(0, 5px, 0);
+	}
+}
+
+@keyframes headShake {
+	0% {
+		transform: translateX(0);
+	}
+
+	6.5% {
+		transform: translateX(-6px) rotateY(-9deg);
+	}
+
+	18.5% {
+		transform: translateX(5px) rotateY(7deg);
+	}
+
+	31.5% {
+		transform: translateX(-3px) rotateY(-5deg);
+	}
+
+	43.5% {
+		transform: translateX(2px) rotateY(3deg);
+	}
+
+	50% {
+		transform: translateX(0);
 	}
 }

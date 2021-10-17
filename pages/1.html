@@ -2,24 +2,28 @@
 layout: default
 permalink: /
 ---
-<div class="game">
-	<button type="button" class="icon" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
-	<button type="button" class="icon">🪄</button>
-	<button type="button" class="icon">🕷️</button>
-	<a href="/2/" class="icon">🎃 <span class="badge">Finish</span></a>
-	<button type="button" class="icon">⚰️</button>
-	<button type="button" class="icon">🪦</button>
-	<button type="button" class="icon">🍂</button>
-	<div class="icon">
-		<div class="scoreboard">
-			Level 1
-		</div>
-	</div>
-	<button type="button" class="icon">🐍</button>
-	<button type="button" class="icon">🐈‍⬛</button>
-	<button type="button" class="icon">🦉</button>
-	<button type="button" class="icon">🪱</button>
-	<button type="button" class="icon">🔮</button>
-	<button type="button" class="icon">🕯️</button>
-	<button type="reset" class="icon">💀</button>
+<div class="rules">
+	<p>Get the <span class="char" style="color:#f1910b;"><span aria-hidden="true">🎃</span> pumpkin</span>. Don't&nbsp;hit&nbsp;the&nbsp;<span class="char" style="color:#ecedf0;"><span aria-hidden="true">💀</span> skull</span>.</p>
 </div>
+<form action="/2/">
+	<div class="game has-focus-styles">
+		<div class="scoreboard">
+			<span class="level">Level 1</span>
+			<span class="timer">00:00:00</span>
+		</div>
+		<button type="button" class="icon is-start" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
+		<button type="button" class="icon">🪄</button>
+		<button type="button" class="icon">🪦</button>
+		<button type="button" class="icon">🕷️</button>
+		<button type="button" class="icon">🐍</button>
+		<button type="button" class="icon">🐈‍⬛</button>
+		<button type="button" class="icon">🦉</button>
+		<button type="submit" class="icon is-finish">🎃 <span class="badge">Finish</span></button>
+		<button type="reset" class="icon is-over">💀</button>
+		<button type="button" class="icon">🍂</button>
+		<button type="button" class="icon">⚰️</button>
+		<button type="button" class="icon">🪱</button>
+		<button type="button" class="icon">🔮</button>
+		<button type="button" class="icon">🕯️</button>
+	</div>
+</form>

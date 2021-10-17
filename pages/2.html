@@ -2,24 +2,39 @@
 layout: default
 permalink: /2/
 ---
-<div class="game">
-	<button type="button" class="icon" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
-	<button type="button" class="icon">🪄</button>
-	<button type="button" class="icon">🐈‍⬛</button>
-	<button type="button" class="icon">🕷️</button>
-	<button type="button" class="icon">⚰️</button>
-	<button type="button" class="icon">🪦</button>
-	<button type="button" class="icon">🍂</button>
-	<div class="icon">
-		<div class="scoreboard">
-			Level 2
-		</div>
-	</div>
-	<a href="/" class="icon">🎃 <span class="badge">Finish</span></a>
-	<button type="button" class="icon">🐍</button>
-	<button type="button" class="icon">🦉</button>
-	<button type="button" class="icon">🪱</button>
-	<button type="button" class="icon">🔮</button>
-	<button type="button" class="icon">🕯️</button>
-	<button type="reset" class="icon">💀</button>
+<div class="rules">
+	<p>Oh no! A malicious <span class="char" style="color:#ecedf0;"><span aria-hidden="true">👻</span> ghost</span> removed all the <code>:focus</code> styles.</p>
 </div>
+<form action="/3/">
+	<div class="game">
+		<div class="scoreboard">
+			<span class="level">Level 2</span>
+			<span class="timer">00:00:00</span>
+		</div>
+		<button type="button" class="icon is-start" autofocus="autofocus"><span class="ghost">👻</span> <span class="badge">Start</span></button>
+		<button type="button" class="icon">🔮</button>
+		<button type="button" class="icon">🐍</button>
+		<button type="submit" class="icon is-finish">🎃 <span class="badge">Finish</span></button>
+		<button type="button" class="icon">🦉</button>
+		<button type="button" class="icon">🪱</button>
+		<button type="button" class="icon">🕯️</button>
+		<button type="button" class="icon">🕷️</button>
+		<button type="button" class="icon">🪦</button>
+		<button type="button" class="icon">🪄</button>
+		<button type="button" class="icon">🐈‍⬛</button>
+		<button type="reset" class="icon">💀</button>
+		<button type="button" class="icon">🍂</button>
+		<button type="button" class="icon">⚰️</button>
+	</div>
+</form>
+<style>
+	.icon:not(.is-start) { animation: ghost ease-in-out 1s; }
+	.icon:not(.is-start):nth-child(2n+1) { animation-delay: 0.1s; }
+	.ghost { animation:shakeY ease-in-out 1s 0.5s; }
+
+	@keyframes ghost {
+		from { border-color:#3d3836; }
+		50% { border-color:#75bfff; }
+		to { border-color:#3d3836; }
+	}
+</style>
