@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /2/
+Disallow: /3/
+Disallow: /4/
+Disallow: /5/
+Disallow: /end/
