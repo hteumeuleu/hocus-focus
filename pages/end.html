@@ -7,6 +7,18 @@ permalink: /end/
 	<p>Congratulations! You did it!</p>
 </div>
 <div class="end">
+	<div class="tweet">
+		<div class="tweet-avatar">
+			🎃
+		</div>
+		<div class="tweet-content">
+			<p>
+				I finished “HOCUS :FOCUS”, a keyboard accessibility horror game, in 00:00:00. <a class="tweet-link" href="{{ site.url }}">{{ site.url }}</a>
+			</p>
+			{%- assign tweet-text = "I finished “HOCUS :FOCUS”, a keyboard accessibility horror game." -%}
+			<a class="tweet-button" href="https://twitter.com/intent/tweet?text={{ tweet-text | uri_escape }}&url={{ site.url }}">Share on Twitter</a>
+		</div>
+	</div>
 	<p>
 		Don’t be a <span class="char" style="color:#96ac9c;"><span aria-hidden="true">🧟</span> monster</span>. Use <code>:focus</code> styles.
 	</p>
@@ -18,9 +30,4 @@ permalink: /end/
 		<li><a href="https://noti.st/ericwbailey/TcMJFP/if-it-s-interactive-it-needs-a-focus-style">If it’s interactive, it needs a focus style</a>, <a href="https://twitter.com/ericwbailey">@ericwbailey</a></li>
 		<li><a href="https://www.sarasoueidan.com/blog/focus-indicators/">A guide to designing accessible, WCAG-compliant focus indicators</a>, <a href="https://twitter.com/SaraSoueidan">@SaraSoueidan</a></li>
 	</ul>
-	<div class="tweet">
-		<p>
-			I finished the “HOCUS :FOCUS” game in 00:00:00. {{ site.url }}
-		</p>
-	</div>
 </div>
