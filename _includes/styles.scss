@@ -114,6 +114,7 @@ code {
 .icon {
 	border-color: #3d3836;
 	background-color: #2f2927;
+	pointer-events: none;
 
 	&.is-start:focus {
 		border-color: #75bfff;
