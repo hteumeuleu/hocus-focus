@@ -50,6 +50,9 @@ ${this.times[0].toString().padStart(2, '0')}:\
 ${this.times[1].toString().padStart(2, '0')}:\
 ${Math.floor(this.times[2]).toString().padStart(2, '0')}`;
 	}
+	save() {
+		localStorage.setItem('score', this.value);
+	}
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -60,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		gameIcon.addEventListener('click', customPreventDefault);
 		gameIcon.addEventListener('keypress', function(event) {
 			if(event.keyCode === 32 || event.keyCode === 13) {
-				if(this.classList.contains('is-over') || this.classList.contains('is-finish')) {
+				if(this.classList.contains('is-finish')) {
 					timer.stop();
 				} else {
 					this.classList.remove('is-error');
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 		gameIcon.addEventListener('focus', function(event) {
-			if(this.classList.contains('is-over')) {
+			if(!this.classList.contains('is-finish')) {
 			}
 		});
 	});
