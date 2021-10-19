@@ -205,18 +205,28 @@ code {
 }
 
 .end {
-	max-width: rem(632px);
+	max-width: rem(544px);
 	margin: auto;
 	min-height: rem(380px);
 }
 
+.ressources-list {
+	margin: rem(16px);
+
+	a:hover, a:focus {
+		color: #75bfff;
+	}
+
+	li:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
+}
+
 .tweet {
-	margin-bottom: rem(32px);
 	padding: rem(12px) rem(16px);
 	min-height: rem(96px);
 	font-size: rem(20px);
 	line-height: 1.25;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	border: rem(2px) solid #3d3836;
 	border-radius: rem(8px);
 	color: #fff;
@@ -266,6 +276,10 @@ code {
 	text-decoration: none;
 	font-size: rem(16px);
 	border-radius: rem(18px);
+
+	&:hover, &:focus {
+		background-color: #1a8cd8;
+	}
 }
 
 @media only screen and (max-width: rem(600px)) {
