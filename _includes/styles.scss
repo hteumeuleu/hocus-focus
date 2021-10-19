@@ -58,6 +58,10 @@ code {
 	a:hover, a:focus {
 		color: #fff;
 	}
+
+	p:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
 }
 
 .title {
