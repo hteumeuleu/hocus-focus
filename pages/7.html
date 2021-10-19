@@ -1,0 +1,38 @@
+---
+title: "Level 7"
+layout: default
+permalink: /7/
+---
+<div class="rules">
+	<p>Let’s get back home. Look out for that <span class="char" style="color:#f1f1f1;"><span aria-hidden="true">🕳️</span> trap</span>. Try to take a step back.</p>
+</div>
+<form action="/8/">
+	<div class="game has-focus-styles">
+		<div class="scoreboard">
+			<span class="level">Level 7</span>
+			<span class="timer">00:00:00</span>
+		</div>
+		<button type="button" class="icon is-start" autofocus="autofocus">🧙‍♀️ <span class="badge">Start</span></button>
+		<button type="button" class="icon">🐍</button>
+		<button type="button" class="icon">⚰️</button>
+		<button type="button" class="icon">💀</button>
+		<button type="button" class="icon">🍂</button>
+		<button type="button" class="icon">🦉</button>
+		<button type="button" class="icon is-trap">🕳️</button>
+		<button type="button" class="icon">🥀</button>
+		<button type="button" class="icon">🕯️</button>
+		<button type="button" class="icon">🦇</button>
+		<button type="button" class="icon">🕷️</button>
+		<button type="button" class="icon">🕸️</button>
+		<button type="button" class="icon">🌰</button>
+		<button type="submit" class="icon is-finish">🎃 <span class="badge">Finish</span></button>
+	</div>
+</form>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelector('.is-trap + .icon').addEventListener('focus', function(event) {
+		this.previousElementSibling.focus();
+	});
+});
+</script>
+{% include instructions.html %}

@@ -66,20 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 		});
-		gameIcon.addEventListener('focus', function(event) {
-			if(!this.classList.contains('is-finish')) {
-			}
-		});
 	});
 
 	const form = document.querySelector('form');
-	if(form) {
-		form.addEventListener('submit', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			window.location = form.getAttribute('action');
-		}, { once:true });
-	}
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		window.location = form.getAttribute('action');
+	}, { once:true });
 
 	const gameIconStart = document.querySelector('.is-start + *');
 	gameIconStart.addEventListener('focus', function(event) {
@@ -88,15 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}, { once:true });
 
+	const game = document.querySelector('.game');
+	game.addEventListener('mousedown', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+	});
+
 	function customPreventDefault(event) {
 		if(!(this.classList.contains('is-finish'))) {
 			event.preventDefault();
 			event.stopPropagation();
 		}
 	}
-});
-
-document.addEventListener('mousedown', function(event) {
-	event.preventDefault();
-	event.stopPropagation();
 });
