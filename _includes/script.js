@@ -1,54 +1,46 @@
 class Timer {
-	// Loosely based on https://codepen.io/_Billy_Brown/pen/dbJeh
 	constructor() {
 		this.value = 0;
 		this.element = document.querySelector('.timer');
 		this.running = false;
-        this.times = [ 0, 0, 0 ];
+        this.time = 0;
+        this.startTime = null;
+        this.animationFrame = null;
+        this.maxTime = (99 * 60 * 1000) + (59 * 1000) + 999;
 	}
 	start() {
-		if(!this.time) {
-			this.time = performance.now();
-		}
 		if(!this.running) {
 			this.running = true;
-			requestAnimationFrame(this.step.bind(this));
+			this.animationFrame = requestAnimationFrame(this.step.bind(this));
         }
 	}
 	stop() {
 		this.running = false;
+		cancelAnimationFrame(this.animationFrame);
 	}
 	step(timestamp) {
 		if(this.running) {
-			this.calculate(timestamp);
-			this.time = timestamp;
-			this.print();
-			requestAnimationFrame(this.step.bind(this));
-		}
-	}
-	calculate(timestamp) {
-		var diff = timestamp - this.time;
-		// Hundredths of a second are 100 ms
-		this.times[2] += diff / 10;
-		// Seconds are 100 hundredths of a second
-		if (this.times[2] >= 100) {
-			this.times[1] += 1;
-			this.times[2] -= 100;
-		}
-		// Minutes are 60 seconds
-		if (this.times[1] >= 60) {
-			this.times[0] += 1;
-			this.times[1] -= 60;
+			if (this.startTime === null) {
+				this.startTime = timestamp;
+			}
+			if(this.time < this.maxTime) {
+				this.time = timestamp - this.startTime;
+				this.print();
+				this.animationFrame = requestAnimationFrame(this.step.bind(this));
+			}
 		}
 	}
 	print() {
 		this.element.innerText = this.getFormattedValue();
 	}
 	getFormattedValue() {
-		return `\
-${this.times[0].toString().padStart(2, '0')}:\
-${this.times[1].toString().padStart(2, '0')}:\
-${Math.floor(this.times[2]).toString().padStart(2, '0')}`;
+		let minutes = Math.floor((this.time % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((this.time % (1000 * 60)) / 1000);
+		let milliseconds = Math.floor(this.time - (minutes * 60 * 1000) - (seconds * 1000));
+		minutes = minutes.toString().padStart(2, '0');
+		seconds = seconds.toString().padStart(2, '0');
+		milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
+		return `${minutes}:${seconds}:${milliseconds}`;
 	}
 	save() {
 		localStorage.setItem('score', this.value);
@@ -104,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 });
 
-document.addEventListener('mousedown', function() {
+document.addEventListener('mousedown', function(event) {
 	event.preventDefault();
 	event.stopPropagation();
 });
