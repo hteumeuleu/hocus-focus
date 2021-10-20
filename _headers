@@ -2,3 +2,9 @@
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
   Content-Security-Policy: script-src 'self'
+/*.js
+  cache-control: public
+  cache-control: max-age=604800
+/*.css
+  cache-control: public
+  cache-control: max-age=604800
