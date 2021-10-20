@@ -48,6 +48,10 @@
 		animation-duration: 0.8s;
 	}
 
+	&.is-good {
+		border-color: #71d981;
+	}
+
 	.has-focus-styles & {
 		&:focus {
 			border-color: #75bfff;
@@ -92,7 +96,9 @@
 		background-color: #75bfff;
 	}
 
+	.is-good:focus &,
 	.has-focus-styles .is-finish:focus & {
+		color: #282220;
 		background-color: #71d981;
 	}
 }

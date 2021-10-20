@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		gameIcon.addEventListener('keypress', function(event) {
 			if(event.keyCode === 32 || event.keyCode === 13) {
 				if(this.classList.contains('is-finish')) {
+					this.classList.add('is-good');
 					timer.stop();
 					score.save(timer.get());
 				} else {
