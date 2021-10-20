@@ -24,7 +24,7 @@
 			<p><a href="https://github.com/hteumeuleu/hocus-focus">View code on GitHub</a></p>
 		</footer>
 	</div>
-	{% if page.url != "/end/" %}
+	{% if page.url != "/end/" and page.url != "/404.html" %}
 	<script src="/assets/js/hocus.js?v={{ site.time | date: "%s" | url_encode }}" defer></script>
 	<noscript><style>.timer{display:none;}</style></noscript>
 	{% endif %}
