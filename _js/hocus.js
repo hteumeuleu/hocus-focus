@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: "/assets/js/hocus.js"
+---
 class Timer {
 	constructor() {
 		this.value = 0;

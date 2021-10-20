@@ -1,0 +1,78 @@
+.end {
+	max-width: rem(544px);
+	margin: auto;
+	min-height: rem(380px);
+}
+
+.ressources-list {
+	margin: rem(16px);
+
+	a:hover, a:focus {
+		color: #75bfff;
+	}
+
+	li:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
+}
+
+.tweet {
+	margin: rem(16px) 0;
+	padding: rem(12px) rem(16px);
+	min-height: rem(96px);
+	font-size: rem(20px);
+	line-height: 1.25;
+	border: rem(2px) solid #3d3836;
+	border-radius: rem(8px);
+	color: #fff;
+	background-color: #2f2927;
+	display: flex;
+}
+
+.tweet-avatar {
+	flex-grow: 0;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: rem(32px);
+	margin-right: rem(12px);
+	width: rem(48px);
+	height: rem(48px);
+	background-color: rgba(255,255,255,0.25);
+	border-radius: 50%;
+}
+
+.tweet-content {
+	padding-top: rem(12px);
+}
+
+.tweet-link {
+	color: #1d9bf0;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.tweet-button {
+	margin-top: rem(12px);
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	padding: 0 rem(16px);
+	min-height: rem(36px);
+	background-color: #1c98eb;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: rem(16px);
+	border-radius: rem(18px);
+
+	&:hover, &:focus {
+		background-color: #1a8cd8;
+	}
+}

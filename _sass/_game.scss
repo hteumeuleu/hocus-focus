@@ -1,0 +1,127 @@
+.game {
+	display: flex;
+	flex-wrap: wrap;
+	gap: rem(16px);
+	max-width: rem(544px);
+	margin: auto;
+	justify-content: center;
+
+	@media only screen and (max-width: rem(600px)) {
+		max-width: rem(320px);
+	}
+}
+
+.icon,
+.scoreboard {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(96px);
+	height: rem(96px);
+	font-size: rem(56px);
+	border: rem(2px) solid transparent;
+	border-radius: rem(8px);
+	outline: none;
+	color: #fff;
+	text-decoration: none;
+
+	@media only screen and (max-width: rem(375px)) {
+		width: rem(80px);
+		height: rem(80px);
+	}
+}
+
+.icon {
+	border-color: #3d3836;
+	background-color: #2f2927;
+	pointer-events: none;
+
+	&.is-start:focus {
+		border-color: #75bfff;
+		background-color: #666;
+	}
+
+	&.is-error {
+		animation-timing-function: ease-in-out;
+		animation-name: headShake;
+		animation-duration: 0.8s;
+	}
+
+	.has-focus-styles & {
+		&:focus {
+			border-color: #75bfff;
+			background-color: #666;
+		}
+
+		&.is-finish:focus {
+			border-color: #71d981;
+		}
+	}
+
+	@media only screen and (max-width: rem(375px)) {
+		font-size: rem(48px);
+	}
+}
+
+.scoreboard {
+	font-size: rem(16px);
+	text-align: center;
+	flex-direction: column;
+}
+
+.badge {
+	position: absolute;
+	bottom: rem(-8px);
+	padding: 0 rem(8px);
+	font-size: rem(12px);
+	font-weight: bold;
+	line-height: rem(16px);
+	text-transform: uppercase;
+	border-radius: rem(10px);
+	color: #fff;
+	background-color: #3d3836;
+
+	.is-start:focus & {
+		color: #282220;
+		background-color: #75bfff;
+	}
+
+	.has-focus-styles :focus & {
+		color: #282220;
+		background-color: #75bfff;
+	}
+
+	.has-focus-styles .is-finish:focus & {
+		background-color: #71d981;
+	}
+}
+
+.level {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.timer {
+	display: block;
+	font-variant-numeric: tabular-nums;
+	font-family: monospace;
+}
+
+.instructions {
+	width: fit-content;
+	margin: rem(32px) auto 0;
+	color: #9e9b9a;
+
+	p:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
+
+	@media (min-width: rem(601px)) {
+		display: flex;
+
+		p {
+			margin: 0 rem(16px);
+		}
+	}
+}

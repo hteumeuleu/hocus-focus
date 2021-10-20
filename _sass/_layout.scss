@@ -1,0 +1,55 @@
+.page {
+	margin: auto;
+	padding: 0 rem(16px);
+}
+
+.header,
+.footer {
+	padding: rem(16px) 0;
+	text-align: center;
+}
+
+.header {
+	@media only screen and (max-width: rem(600px)) {
+		font-size: rem(12px);
+	}
+}
+
+.footer {
+	color: #9e9b9a;
+
+	a:hover, a:focus {
+		color: #fff;
+	}
+
+	p:not(:last-child) {
+		margin-bottom: rem(4px);
+	}
+}
+
+.title {
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 2em;
+	font-family: 'Montserrat', 'Futura', sans-serif;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.subtitle {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+.rules {
+	margin-bottom: rem(16px);
+	color: #9e9b9a;
+	text-align: center;
+}
+
+.char {
+	font-weight: bold;
+	white-space: nowrap;
+}
