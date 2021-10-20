@@ -13,15 +13,15 @@ permalink: /end/
 		</div>
 		<div class="tweet-content">
 			{% assign site-url = "https://focus.hteumeuleu.com" %}
+			{%- assign tweet-text = "I finished “HOCUS :FOCUS”, a keyboard accessibility horror game, in 66:66:66." -%}
 			<p>
-				I finished “Hocus :focus”, a keyboard accessibility horror game, in 00:00:00. <a class="tweet-link" href="{{ site-url }}">{{ site-url }}</a>
+				{{ tweet-text }} <a class="tweet-link" href="{{ site-url }}">{{ site-url }}</a>
 			</p>
-			{%- assign tweet-text = "I finished “HOCUS :FOCUS”, a keyboard accessibility horror game." -%}
 			<a class="tweet-button" href="https://twitter.com/intent/tweet?text={{ tweet-text | uri_escape }}&url={{ site-url }}">Share on Twitter</a>
 		</div>
 	</div>
 	<p>
-		Don’t be a <span class="char" style="color:#96ac9c;"><span aria-hidden="true">🧟</span> monster</span>. Use <code>:focus</code> styles.<br>Learn more with the following ressources:
+		Don’t be a <span class="char" style="color:#96ac9c;"><span aria-hidden="true">🧟</span> monster</span>. Make your websites keyboard accessible.<br>Learn more with the following ressources:
 	</p>
 	<ul class="ressources-list">
 		<li><a href="https://webaim.org/techniques/keyboard/">Keyboard Accessibility</a>, <a href="https://twitter.com/webaim">WebAIM</a></li>
@@ -30,3 +30,27 @@ permalink: /end/
 		<li><a href="https://adrianroselli.com/2017/02/avoid-default-browser-focus-styles.html">Avoid Default Browser Focus Styles</a>, <a href="https://twitter.com/aardrian">@aardrian</a></li>
 	</ul>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const tweetParagraph = document.querySelector('.tweet-content p');
+	const defaultScore = '66:66:66';
+	const sessionScore = parseFloat(sessionStorage.getItem('score')) || 5999999;
+
+	let sessionScoreFormatted = '';
+	let minutes = Math.floor((sessionScore % (1000 * 60 * 60)) / (1000 * 60));
+	let seconds = Math.floor((sessionScore % (1000 * 60)) / 1000);
+	let milliseconds = Math.floor(sessionScore - (minutes * 60 * 1000) - (seconds * 1000));
+	minutes = minutes.toString().padStart(2, '0');
+	seconds = seconds.toString().padStart(2, '0');
+	milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
+	sessionScoreFormatted = `${minutes}:${seconds}:${milliseconds}`;
+
+	let tweetContent = tweetParagraph.innerHTML.trim();
+	tweetContent = tweetContent.replace(defaultScore, sessionScoreFormatted);
+	tweetParagraph.innerHTML = tweetContent;
+	const tweetButton = document.querySelector('.tweet-button');
+	let tweetButtonHref = tweetButton.getAttribute('href');
+	tweetButtonHref.replace(defaultScore, sessionScoreFormatted)
+	tweetButton.setAttribute('href', tweetButtonHref);
+});
+</script>

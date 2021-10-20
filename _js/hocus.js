@@ -46,13 +46,34 @@ class Timer {
 		milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
 		return `${minutes}:${seconds}:${milliseconds}`;
 	}
-	save() {
-		localStorage.setItem('score', this.value);
+	get() {
+		return this.time;
+	}
+}
+
+class Score {
+	constructor() {
+		this.key = 'score';
+	}
+	get() {
+		return sessionStorage.getItem(this.key);
+	}
+	save(value) {
+		let score = this.get() || 0;
+		score = parseFloat(score);
+		score += value;
+		sessionStorage.setItem(this.key, score);
 	}
 }
 
 document.addEventListener('DOMContentLoaded', function() {
 	const timer = new Timer();
+	const score = new Score();
+
+	if(score.get() === null && window.location.pathname !== '/') {
+		window.location.href = '/';
+	}
+
 	const gameIcons = Array.from(document.querySelectorAll('button.icon'));
 	gameIcons.forEach(function(gameIcon, index) {
 		gameIcon.addEventListener('mousedown', customPreventDefault);
@@ -61,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			if(event.keyCode === 32 || event.keyCode === 13) {
 				if(this.classList.contains('is-finish')) {
 					timer.stop();
+					score.save(timer.get());
 				} else {
 					this.classList.remove('is-error');
 					this.classList.add('is-error');
