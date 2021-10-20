@@ -279,6 +279,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   kramdown (>= 2.3.1)
+  nokogiri (>= 1.12.5)
   webrick (~> 1.7)
 
 BUNDLED WITH
