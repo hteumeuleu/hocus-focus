@@ -131,3 +131,32 @@
 		}
 	}
 }
+
+@media (pointer:coarse) {
+	.instructions p {
+		touch-action: manipulation;
+		-webkit-user-select: none;
+		user-select: none;
+		border: rem(2px) solid #3d3836;
+		background-color: #2f2927;
+		border-radius: rem(8px);
+		padding: rem(8px);
+	}
+
+	@media only screen and (max-width: rem(600px)) {
+		.instructions {
+			width: auto;
+			max-width: rem(320px);
+		}
+
+		.instructions p:not(:last-child) {
+			margin-bottom: rem(16px);
+		}
+	}
+
+	@media only screen and (max-width: rem(375px)) {
+		.instructions {
+			max-width: rem(272px);
+		}
+	}
+}

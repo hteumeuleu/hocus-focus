@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					this.classList.add('is-good');
 					timer.stop();
 					score.save(timer.get());
+					this.form.submit();
 				} else {
 					this.classList.remove('is-error');
 					this.classList.add('is-error');
@@ -120,5 +121,51 @@ document.addEventListener('DOMContentLoaded', function() {
 			event.preventDefault();
 			event.stopPropagation();
 		}
+	}
+
+	// Keyboard simulation for touch devices
+	if(window.matchMedia('(pointer:coarse)').matches) {
+		const instructions = document.querySelector('.instructions');
+		instructions.addEventListener('mousedown', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+		});
+
+		const keyNext = document.querySelector('.is-key-next');
+		keyNext.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			let next = document.activeElement.nextElementSibling;
+			if(next.getAttribute('tabindex') == "-1") {
+				next = next.nextElementSibling;
+			}
+			if(next == null) {
+				document.querySelector('.game button:first-of-type').focus();
+			} else {
+				next.focus();
+			}
+		});
+
+		const keyPrevious = document.querySelector('.is-key-previous');
+		keyPrevious.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			let previous = document.activeElement.previousElementSibling;
+			if(previous.getAttribute('tabindex') == "-1") {
+				previous = previous.previousElementSibling;
+			}
+			if(previous == null || previous.tagName.toLowerCase() !== 'button') {
+				document.querySelector('.game button:last-of-type').focus();
+			} else {
+				previous.focus();
+			}
+		});
+
+		const keyValidate = document.querySelector('.is-key-validate');
+		keyValidate.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			document.activeElement.dispatchEvent(new KeyboardEvent('keypress', {'keyCode':'32'}));
+		});
 	}
 });
