@@ -123,6 +123,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
+	// Add specific instructions for Safari
+	if(navigator.userAgent.toLowerCase().indexOf('safari') > -1) {
+		const instructionsItems = document.querySelectorAll('.instructions p');
+		console.log(instructionsItems);
+		instructionsItems.forEach(function(item, index) {
+			if(item.classList.contains('is-key-next') || item.classList.contains('is-key-previous')) {
+				item.innerHTML = "<kbd>OPTION</kbd> + " + item.innerHTML;
+			}
+		});
+	}
+
 	// Keyboard simulation for touch devices
 	if(window.matchMedia('(pointer:coarse)').matches) {
 		const instructions = document.querySelector('.instructions');
