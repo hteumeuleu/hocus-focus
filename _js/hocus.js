@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			event.preventDefault();
 			event.stopPropagation();
 			let next = document.activeElement.nextElementSibling;
-			if(next.getAttribute('tabindex') == "-1") {
+			if(next && next.getAttribute('tabindex') == "-1") {
 				next = next.nextElementSibling;
 			}
 			if(next == null) {
