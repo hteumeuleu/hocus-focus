@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	tweetParagraph.innerHTML = tweetContent;
 	const tweetButton = document.querySelector('.tweet-button');
 	let tweetButtonHref = tweetButton.getAttribute('href');
-	tweetButtonHref.replace(defaultScore, sessionScoreFormatted)
+	tweetButtonHref = tweetButtonHref.replace(defaultScore, sessionScoreFormatted)
 	tweetButton.setAttribute('href', tweetButtonHref);
 });
 </script>
