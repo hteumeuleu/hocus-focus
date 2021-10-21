@@ -36,6 +36,7 @@
 	border-color: #3d3836;
 	background-color: #2f2927;
 	pointer-events: none;
+	outline: none !important; // Super Heavy Anti-Cheat Technique (for users with custom styles)
 
 	&.is-start:focus {
 		border-color: #75bfff;
