@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const score = new Score();
 
 	if(score.get() === null && window.location.pathname !== '/') {
-		window.location.href = '/';
+		// window.location.href = '/';
 	}
 
 	const gameIcons = Array.from(document.querySelectorAll('button.icon'));
