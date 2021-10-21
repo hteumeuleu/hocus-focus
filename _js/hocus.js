@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				if(this.classList.contains('is-finish')) {
 					this.classList.add('is-good');
 					timer.stop();
-					score.save(timer.get());
 					this.form.submit();
 				} else {
 					this.classList.remove('is-error');
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	form.addEventListener('submit', function(event) {
 		event.preventDefault();
 		event.stopPropagation();
+		score.save(timer.get());
 		window.location = form.getAttribute('action');
 	}, { once:true });
 
