@@ -83,7 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				if(this.classList.contains('is-finish')) {
 					this.classList.add('is-good');
 					timer.stop();
-					this.form.dispatchEvent(new SubmitEvent(this));
+					const event = new Event('submit', {
+						'bubbles'    : true,
+						'cancelable' : true
+					});
+					this.form.dispatchEvent(event);
 				} else {
 					this.classList.remove('is-error');
 					this.classList.add('is-error');
