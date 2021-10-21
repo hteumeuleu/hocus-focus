@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				if(this.classList.contains('is-finish')) {
 					this.classList.add('is-good');
 					timer.stop();
-					this.form.submit();
+					this.form.dispatchEvent(new SubmitEvent(this));
 				} else {
 					this.classList.remove('is-error');
 					this.classList.add('is-error');
