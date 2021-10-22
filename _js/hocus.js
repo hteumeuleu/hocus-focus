@@ -137,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	// Add specific instructions for Safari
-	if(navigator.userAgent.toLowerCase().indexOf('safari') > -1) {
+	const isSafari = /^((?!chrome|android|edge).)*safari/i.test(navigator.userAgent);
+	if(isSafari) {
 		const instructionsItems = document.querySelectorAll('.instructions p');
 		instructionsItems.forEach(function(item, index) {
 			if(item.classList.contains('is-key-next') || item.classList.contains('is-key-previous')) {
