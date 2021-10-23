@@ -77,17 +77,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	const gameIcons = Array.from(document.querySelectorAll('button.icon'));
 	gameIcons.forEach(function(gameIcon, index) {
 		gameIcon.addEventListener('mousedown', customPreventDefault);
-		gameIcon.addEventListener('click', customPreventDefault);
+		gameIcon.addEventListener('click', function(event) {
+			customPreventDefault(event);
+			if(this.classList.contains('is-finish')) {
+				customSubmit(this);
+			}
+		});
 		gameIcon.addEventListener('keypress', function(event) {
+			customPreventDefault(event);
 			if(event.keyCode === 32 || event.keyCode === 13) {
 				if(this.classList.contains('is-finish')) {
 					this.classList.add('is-good');
 					timer.stop();
-					const event = new Event('submit', {
-						'bubbles'    : true,
-						'cancelable' : true
-					});
-					this.form.dispatchEvent(event);
+					customSubmit(this);
 				} else {
 					this.classList.remove('is-error');
 					this.classList.add('is-error');
@@ -101,8 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	const form = document.querySelector('form');
 	form.addEventListener('submit', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
+		customPreventDefault(event);
 		score.save(timer.get());
 		window.location = form.getAttribute('action');
 	}, { once:true });
@@ -116,19 +117,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	const game = document.querySelector('.game');
 	game.addEventListener('mousedown', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
+		customPreventDefault(event);
 	});
 
 	function customPreventDefault(event) {
-		if(!(this.classList.contains('is-finish'))) {
-			event.preventDefault();
-			event.stopPropagation();
+		event.preventDefault();
+		event.stopPropagation();
+	}
+
+	function customSubmit(submitter) {
+		let event = new Event('submit', {
+			'bubbles'    : true,
+			'cancelable' : true
+		});
+		if(typeof SubmitEvent !== 'undefined') {
+			event = new SubmitEvent('submit', { submitter: submitter, cancelable: true });
 		}
+		submitter.form.dispatchEvent(event);
 	}
 
 	// Add specific instructions for Safari
-	if(navigator.userAgent.toLowerCase().indexOf('safari') > -1) {
+	const isSafari = /^((?!chrome|android|edge).)*safari/i.test(navigator.userAgent);
+	if(isSafari) {
 		const instructionsItems = document.querySelectorAll('.instructions p');
 		instructionsItems.forEach(function(item, index) {
 			if(item.classList.contains('is-key-next') || item.classList.contains('is-key-previous')) {

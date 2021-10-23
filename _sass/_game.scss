@@ -49,7 +49,7 @@
 		animation-duration: 0.8s;
 	}
 
-	&.is-good {
+	&.is-good:focus {
 		border-color: #71d981;
 	}
 
