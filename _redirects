@@ -4,6 +4,4 @@ https://hocus-focus-hteumeuleu.netlify.app/* https://focus.hteumeuleu.com/:splat
 /1/ 	/ 	301
 /9/ 	/ 	301
 /10/ 	/ 	301
-/apple-touch-icon-precomposed.png 	/apple-touch-icon.png 	301
-/apple-touch-icon-120x120-precomposed.png 	/apple-touch-icon.png 	301
-/apple-touch-icon-120x120.png 	/apple-touch-icon.png 	301
+/apple-touch-icon-*.png 	/apple-touch-icon.png 	301
