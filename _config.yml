@@ -5,7 +5,7 @@ collections:
 permalink: /:title/
 
 exclude: [vendor, "Gemfile", "Gemfile.lock", "README.md", "LICENCE"]
-include: ["_js"]
+include: ["_js", "_redirects", "_headers"]
 
 sass:
   style: compressed
