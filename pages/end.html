@@ -13,7 +13,7 @@ permalink: /end/
 		</div>
 		<div class="tweet-content">
 			{% assign site-url = "https://focus.hteumeuleu.com" %}
-			{%- assign tweet-text = "I finished “Hocus :focus”, a keyboard accessibility horror game, in 66:66:66. Don’t be a 🧟 monster. Make your websites keyboard accessible." -%}
+			{%- assign tweet-text = "I finished “Hocus :focus”, a keyboard accessibility horror game, in 66:66.66. Don’t be a 🧟 monster. Make your websites keyboard accessible." -%}
 			<p>
 				{{ tweet-text }} <a class="tweet-link" href="{{ site-url }}">{{ site-url }}</a>
 			</p>
@@ -33,7 +33,7 @@ permalink: /end/
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	const tweetParagraph = document.querySelector('.tweet-content p');
-	const defaultScore = '66:66:66';
+	const defaultScore = '66:66.66';
 	const sessionScore = parseFloat(sessionStorage.getItem('score')) || 5999999;
 
 	let sessionScoreFormatted = '';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	minutes = minutes.toString().padStart(2, '0');
 	seconds = seconds.toString().padStart(2, '0');
 	milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
-	sessionScoreFormatted = `${minutes}:${seconds}:${milliseconds}`;
+	sessionScoreFormatted = `${minutes}:${seconds}.${milliseconds}`;
 
 	let tweetContent = tweetParagraph.innerHTML.trim();
 	tweetContent = tweetContent.replace(defaultScore, sessionScoreFormatted);

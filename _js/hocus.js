@@ -44,7 +44,7 @@ class Timer {
 		minutes = minutes.toString().padStart(2, '0');
 		seconds = seconds.toString().padStart(2, '0');
 		milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
-		return `${minutes}:${seconds}:${milliseconds}`;
+		return `${minutes}:${seconds}.${milliseconds}`;
 	}
 	get() {
 		return this.time;
