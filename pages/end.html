@@ -7,17 +7,29 @@ permalink: /end/
 	<p>Congratulations! You did it!</p>
 </div>
 <div class="end">
-	<div class="tweet">
-		<div class="tweet-avatar" aria-hidden="true">
+	<div class="toot">
+		<div class="toot-avatar" aria-hidden="true">
 			🥧
 		</div>
-		<div class="tweet-content">
+		<div class="toot-content">
 			{% assign site-url = "https://focus.hteumeuleu.com" %}
-			{%- assign tweet-text = "I finished “Hocus :focus”, a keyboard accessibility horror game, in 66:66.66. Don’t be a 🧟 monster. Make your websites keyboard accessible." -%}
+			{%- assign toot-text = "I finished “Hocus :focus”, a keyboard accessibility horror game, in 66:66.66. Don’t be a 🧟 monster. Make your websites keyboard accessible." -%}
 			<p>
-				{{ tweet-text }} <a class="tweet-link" href="{{ site-url }}">{{ site-url }}</a>
+				{{ toot-text }} <a class="toot-link" href="{{ site-url }}">{{ site-url }}</a>
 			</p>
-			<a class="tweet-button" href="https://twitter.com/intent/tweet?text={{ tweet-text | uri_escape }}&url={{ site-url }}">Share on Twitter</a>
+			<a class="toot-button" onclick="shareOnMastodon(this)" href="https://mastodon.social/share?text={{ toot-text | uri_escape }}&url={{ site-url }}">Share on Mastodon</a>
+			<script>
+				// via https://www.bentasker.co.uk/posts/documentation/general/adding-a-share-on-mastodon-button-to-a-website.html
+				function shareOnMastodon(e){
+					const domain = prompt("Enter your Mastodon domain", "mastodon.social");
+					if (domain == "" || domain == null){
+						return;
+					}
+					e.preventDefault();
+					const url = "https://" + domain + "/share?text={{ toot-text | uri_escape }}&url={{ site-url }}";
+					window.open(url, '_blank');
+				}
+			</script>
 		</div>
 	</div>
 	<p>
@@ -32,7 +44,7 @@ permalink: /end/
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	const tweetParagraph = document.querySelector('.tweet-content p');
+	const tootParagraph = document.querySelector('.toot-content p');
 	const defaultScore = '66:66.66';
 	const sessionScore = parseFloat(sessionStorage.getItem('score')) || 5999999;
 
@@ -45,12 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	milliseconds = milliseconds.toString().padStart(3, '0').substring(0, 2);
 	sessionScoreFormatted = `${minutes}:${seconds}.${milliseconds}`;
 
-	let tweetContent = tweetParagraph.innerHTML.trim();
-	tweetContent = tweetContent.replace(defaultScore, sessionScoreFormatted);
-	tweetParagraph.innerHTML = tweetContent;
-	const tweetButton = document.querySelector('.tweet-button');
-	let tweetButtonHref = tweetButton.getAttribute('href');
-	tweetButtonHref = tweetButtonHref.replace(defaultScore, sessionScoreFormatted)
-	tweetButton.setAttribute('href', tweetButtonHref);
+	let tootContent = tootParagraph.innerHTML.trim();
+	tootContent = tootContent.replace(defaultScore, sessionScoreFormatted);
+	tootParagraph.innerHTML = tootContent;
+	const tootButton = document.querySelector('.toot-button');
+	let tootButtonHref = tootButton.getAttribute('href');
+	tootButtonHref = tootButtonHref.replace(defaultScore, sessionScoreFormatted)
+	tootButton.setAttribute('href', tootButtonHref);
 });
 </script>
