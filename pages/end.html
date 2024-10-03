@@ -17,18 +17,19 @@ permalink: /end/
 			<p>
 				{{ toot-text }} <a class="toot-link" href="{{ site-url }}">{{ site-url }}</a>
 			</p>
-			<a class="toot-button" onclick="shareOnMastodon(this)" href="https://mastodon.social/share?text={{ toot-text | uri_escape }}&url={{ site-url }}">Share on Mastodon</a>
+			<a class="toot-button" href="https://mastodon.social/share?text={{ toot-text | uri_escape }}&url={{ site-url }}">Share on Mastodon</a>
 			<script>
-				// via https://www.bentasker.co.uk/posts/documentation/general/adding-a-share-on-mastodon-button-to-a-website.html
-				function shareOnMastodon(e){
+				const btn = document.querySelector('.toot-button');
+				btn.addEventListener('click', (e) => {
+					e.preventDefault();
+					// via https://www.bentasker.co.uk/posts/documentation/general/adding-a-share-on-mastodon-button-to-a-website.html
 					const domain = prompt("Enter your Mastodon domain", "mastodon.social");
 					if (domain == "" || domain == null){
 						return;
 					}
-					e.preventDefault();
 					const url = "https://" + domain + "/share?text={{ toot-text | uri_escape }}&url={{ site-url }}";
 					window.open(url, '_blank');
-				}
+				});
 			</script>
 		</div>
 	</div>
