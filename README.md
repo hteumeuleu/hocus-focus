@@ -37,7 +37,7 @@ bundle exec jekyll serve --incremental
 ## Random Notes
 
 * I wanted to make the game as light as possible. Each page is only 3 requests (1 HTML, 1 CSS, 1 JS) and weighs around 10 Kb (or 4 Kb gzipped). And because browsers will likely cache the JS and CSS, any internal page should only have to download the HTML (around 3 Kb, or 1 Kb gzipped).
-* The game can be played without JavaScript.
+* The game can be played almost entirely without JavaScript (except for level 7).
 
 ## Licence
 
