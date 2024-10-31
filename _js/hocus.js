@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		window.location.href = '/';
 	}
 
-	const gameIcons = Array.from(document.querySelectorAll('button.icon'));
+	const gameIcons = Array.from(document.querySelectorAll('button.icon, a.icon'));
 	gameIcons.forEach(function(gameIcon, index) {
 		gameIcon.addEventListener('mousedown', customPreventDefault);
 		gameIcon.addEventListener('click', function(event) {
@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 		gameIcon.addEventListener('keypress', function(event) {
+			if(event.target.href !== undefined) {
+				document.location.hash = event.target.getAttribute('href');
+				document.getElementById(event.target.getAttribute('href').substring(1)).focus();
+				return;
+			}
 			customPreventDefault(event);
 			if(event.keyCode === 32 || event.keyCode === 13) {
 				if(this.classList.contains('is-finish')) {
